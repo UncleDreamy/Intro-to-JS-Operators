@@ -15,6 +15,7 @@ calculatorwinputs.html
 
 * v1 - Base Version
 * v1.2 - Fixed error with users not being able to calculate using 0
+* v1.5 - Changed operator input type to select and options
 
 
 random.html
