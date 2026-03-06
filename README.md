@@ -1,42 +1,5 @@
-# Intro-to-JS-Operators
+# Readme for Instructions
 
-##### //At a restaurant, you order one soup for $10, 3 burgers for $8 each, and one icecream for $5.Use Javascript to calculate the cost of the order.
-
-let soup = 10;
-let burger = 8;
-let icecream = 5;
-let total = soup + burger * 3 + icecream;
-let currency = "$";
-console.log(currency, total);
-**The result of the above syntax would be $ 39.**
-
-##### //Youre at a restaurant with 2 friends and mae the same order as above , calculate how much each person pays.
-
-console.log(currency, total / 3)
-
-**The result of the above syntax would be** $ 13.
-
-##### //calculate the total cost of a toaster (18.50) and 2 shirts (7.50) each.
-
-//calculate the total cost of a toaster (18.50) and 2 shirts (7.50) each
-let toaster =  18.50;
-let shirt =  7.50;
-let secondtotal = toaster + shirt * 2;
-console.log(currency, secondtotal);
-**The result of the above syntax would be** $ 33.5.
-
-##### Calcuate 10% and then 20% tax on the above.
-
-let tax = 10/100;
-console.log(tax)
-**0.1**
-
-let subtotal = tax * secondtotal;
-console.log(currency, subtotal);
-**The result of the above syntax would be** $ 3.35.
-
-
-###### 20% tax
-
-console.log(currency, tax *2 * secondtotal)
- **The result of the above syntax would be** $ 6.7.
+* Index.html is for my very first Js code using console for mathematical operations
+* random.html is a file i use for classes to text out code for proper understanding
+* calculatorwinputs.html is a calculator done using html input tags.
