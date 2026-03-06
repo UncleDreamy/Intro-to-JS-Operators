@@ -6,13 +6,18 @@
     <title>Mini Manual Calculator</title>
     <style>
       input,
-      button {
+      button,
+      select {
         padding: 10px;
         margin: 10px;
         outline: none;
         border-radius: 10px;
         border: 1px solid blue;
         background: none;
+      }
+      select {
+        font-size: 15px;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -30,10 +35,12 @@
       placeholder="Type Numbers Only" />
 
     <!-- select to choose the operator for the calculation -->
-    <input
-      type="text"
-      id="operator"
-      placeholder="Operator (+, -, *, /)" />
+    <select name="" id="operator">
+      <option value="+">+ (Plus)</option>
+      <option value="-">- (Minus)</option>
+      <option value="*">* (Multiplied)</option>
+      <option value="/">/ (Divide)</option>
+    </select>
     <!-- input for the second value -->
     <input
       type="number"
@@ -91,6 +98,8 @@
           let cv1 = Number(num1.value);
           let cv2 = Number(num2.value);
           message.innerText = cv1 / cv2;
+        } else {
+          message.innerText = "Invalid operator! Please use only: +, -, *, /";
         }
       });
     </script>
