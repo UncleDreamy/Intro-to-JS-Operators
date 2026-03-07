@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Bootstrap/bootstrap.css" />
+    <title>Force Calculator</title>
+    <style>
+      div {
+        height: 100vh !important;
+        width: 100vw !important;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      button {
+        width: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <h3>Newton's Second Law: F = ma</h3>
+      <!-- input fields for force, mass and acceleration -->
+      <label for="force">Force:</label>
+      <input
+        type="text"
+        name="force"
+        id="force"
+        class="border border-dark bg-body p-2 mb-3" />
+
+      <label for="mass">Mass:</label>
+      <input
+        type="text"
+        name="mass"
+        id="mass"
+        class="border border-dark bg-body p-2 mb-3" />
+
+      <label for="acceleration">Acceleration:</label>
+      <input
+        type="text"
+        name="acceleration"
+        id="acceleration"
+        class="border border-dark bg-body p-2 mb-3" />
+
+      <!-- submit button for the calculation -->
+      <button
+        id="submit"
+        class="border border-dark p-2 mb-3 rounded-2 btn btn-outline-primary text-uppercase fw-bold">
+        Calculate
+      </button>
+
+      <p id="message" class="text-danger"></p>
+    </div>
+  </body>
+
+  <script>
+    let force = document.getElementById("force");
+    let mass = document.getElementById("mass");
+    let acceleration = document.getElementById("acceleration");
+    let submit = document.getElementById("submit");
+    let message = document.getElementById("message");
+    // const input = document.getElementById('force')
+    // console.dir(input);
+
+    submit.addEventListener("click", () => {
+      message.innerText = "";
+      if (
+        force.value === "" &&
+        mass.value === "" &&
+        acceleration.value === ""
+      ) {
+        message.innerText = "Please fill in at least two fields";
+      } else if (force.value === "") {
+        let cv1 = Number(mass.value);
+        let cv2 = Number(acceleration.value);
+        let force_result = cv1 * cv2;
+        force.value = force_result;
+        message.innerText = "Answer for Force (F) is displayed above";
+      } else if (mass.value === "") {
+        message.innerText = "";
+        let cv1 = Number(force.value);
+        let cv2 = Number(acceleration.value);
+        let mass_result = cv1 / cv2;
+        mass.value = mass_result;
+        message.innerText = "Answer for Mass (m) is displayed above";
+      } else if (acceleration.value === "") {
+        message.innerText = "";
+        let cv1 = Number(force.value);
+        let cv2 = Number(mass.value);
+        let acceleration_result = cv1 / cv2;
+        acceleration.value = acceleration_result;
+        message.innerText = "Answer for Acceleration (a) is displayed above";
+      } else {
+        force.value = "";
+        mass.value = "";
+        acceleration.value = "";
+        message.innerText = "Please fill in only two fields";
+      }
+      return;
+    });
+  </script>
+  <script src="Bootstrap/bootstrap.bundle.js"></script>
+</html>
