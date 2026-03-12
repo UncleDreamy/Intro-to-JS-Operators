@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Bootstrap/bootstrap.css" />
+    <title>Bounce</title>
+    <style>
+      .main-container {
+        width: 100vw !important;
+        height: 100vh !important;
+        border: none !important;
+      }
+
+      .inner-container {
+        height: 35vh;
+        width: 70vw;
+      }
+      .walls {
+        background-color: black;
+        width: 5%;
+      }
+      .ball-holder {
+        width: 90%;
+        position: relative;
+        border-bottom: 2px solid black;
+        border-top: 2px solid black;
+      }
+      .ball {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        background-color: black;
+        position: absolute;
+        margin-top: 249px;
+        margin-left: 47%;
+      }
+      .game-controller {
+        height: 50vh;
+        width: 60vw;
+      }
+      .top-container,
+      .mid-container,
+      .bottom-container,
+      .input-container {
+        height: 25%;
+        width: 100%;
+      }
+      .input-container > div {
+        width: 50%;
+      }
+      button {
+        width: 100px;
+        height: 50%;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="main-container d-flex flex-wrap flex-column justify-content-around align-items-center">
+      <!-- game screen -->
+      <div
+        class="d-flex align-items-center justify-content-center inner-container">
+        <div class="walls h-100"></div>
+        <div class="ball-holder w-75 h-100">
+          <div class="ball" id="ball-circle"></div>
+        </div>
+        <div class="walls h-100"></div>
+      </div>
+      <!-- end of game screen  -->
+      <p style="color: red" id="message"></p>
+      <!-- game controller -->
+      <div class="d-flex flex-column game-controller">
+        <div
+          class="top-container d-flex justify-content-center align-items-end">
+          <button class="btn btn-outline-dark" id="up-btn">Up</button>
+        </div>
+        <div
+          class="mid-container d-flex justify-content-center gap-5 align-items-center">
+          <button class="btn btn-outline-dark" id="left-btn">Left</button>
+          <button class="btn btn-outline-dark" id="right-btn">Right</button>
+        </div>
+        <div
+          class="bottom-container d-flex justify-content-center align-items-start">
+          <button class="btn btn-outline-dark" id="down-btn">Down</button>
+        </div>
+        <div
+          class="input-container d-flex align-items-center justify-content-between">
+          <div>
+            <label for="vertical" class="small">Vertical Change:</label>
+            <input
+              type="number"
+              id="vertical"
+              name="change"
+              step="10"
+              min="10"
+              class="rounded input-group-text w-75"
+              placeholder="Input Vertical Change" />
+          </div>
+          <div>
+            <label for="horizontal" class="small">Horizontal Change:</label>
+            <input
+              type="number"
+              step="1"
+              id="horizontal"
+              name="change"
+              min="1"
+              class="rounded input-group-text w-75"
+              placeholder="Input Horizontal Change" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let up_btn = document.getElementById("up-btn");
+      let left_btn = document.getElementById("left-btn");
+      let right_btn = document.getElementById("right-btn");
+      let down_btn = document.getElementById("down-btn");
+      let ball = document.getElementById("ball-circle");
+      let h_value = document.getElementById("horizontal");
+      let v_value = document.getElementById("vertical");
+      let message = document.getElementById("message");
+
+      let currentTop = 249;
+
+      up_btn.addEventListener("click", () => {
+        let cv1 = Number(v_value.value);
+        currentTop -= cv1;
+        if (currentTop < -1) {
+          currentTop = -1;
+          message.innerText = "Max limit reached, reduce increment or go down";
+          return;
+        } else {
+          message.innerText = "";
+          ball.style.marginTop = currentTop + "px";
+        }
+      });
+
+      down_btn.addEventListener("click", () => {
+        let cv1 = Number(v_value.value);
+        currentBottom = currentTop += cv1;
+        message.innerText = "";
+
+        if (currentBottom >= 249) {
+          message.innerText = "Max limit reached, reduce increment or go up";
+          currentTop = 259;
+          return;
+        } else {
+          message.innerText = "";
+          ball.style.marginTop = currentBottom + "px";
+        }
+      });
+
+      let currentHorizontal = 47;
+
+      right_btn.addEventListener("click", () => {
+        let cv2 = Number(h_value.value);
+        currentHorizontal += cv2;
+
+        if (currentHorizontal >= 94) {
+          currentHorizontal = 94;
+          message.innerText = "Max limit reached, reduce increment or go left";
+          return;
+        } else {
+          message.innerText = "";
+          ball.style.marginLeft = currentHorizontal + "%";
+          console.log(currentHorizontal);
+        }
+      });
+
+      left_btn.addEventListener("click", () => {
+        let cv2 = Number(h_value.value);
+        currentHorizontal -= cv2;
+
+        if (currentHorizontal <= 0) {
+          currentHorizontal = 0;
+          message.innerText = "Min limit reached, reduce increment or go right";
+          return;
+        } else {
+          message.innerText = "";
+          ball.style.marginLeft = currentHorizontal + "%";
+        }
+      });
+    </script>
+
+    <script src="Bootstrap/bootstrap.bundle.js"></script>
+  </body>
+</html>
