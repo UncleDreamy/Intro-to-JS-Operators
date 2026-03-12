@@ -69,7 +69,11 @@
         <div class="walls h-100"></div>
       </div>
       <!-- end of game screen  -->
-      <p style="color: red" id="message"></p>
+      <center>
+        <p style="color: red" id="message">
+          Type Increment Values and Press Buttons
+        </p>
+      </center>
       <!-- game controller -->
       <div class="d-flex flex-column game-controller">
         <div
@@ -133,7 +137,7 @@
           message.innerText = "Max limit reached, reduce increment or go down";
           return;
         } else {
-          message.innerText = "";
+          message.innerText = "Up";
           ball.style.marginTop = currentTop + "px";
         }
       });
@@ -141,14 +145,14 @@
       down_btn.addEventListener("click", () => {
         let cv1 = Number(v_value.value);
         currentBottom = currentTop += cv1;
-        message.innerText = "";
+        message.innerText = "Type Increment Values and Press Buttons";
 
         if (currentBottom >= 249) {
           message.innerText = "Max limit reached, reduce increment or go up";
           currentTop = 259;
           return;
         } else {
-          message.innerText = "";
+          message.innerText = "Down";
           ball.style.marginTop = currentBottom + "px";
         }
       });
@@ -164,7 +168,7 @@
           message.innerText = "Max limit reached, reduce increment or go left";
           return;
         } else {
-          message.innerText = "";
+          message.innerText = "Right";
           ball.style.marginLeft = currentHorizontal + "%";
           console.log(currentHorizontal);
         }
@@ -179,7 +183,7 @@
           message.innerText = "Min limit reached, reduce increment or go right";
           return;
         } else {
-          message.innerText = "";
+          message.innerText = "Left";
           ball.style.marginLeft = currentHorizontal + "%";
         }
       });

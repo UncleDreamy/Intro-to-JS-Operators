@@ -31,6 +31,7 @@ bouncegame.html
 
 * v1 - Base Version
 
-movegame.htm
+movegame.html
 
 * v1 - Base Version
+* v1.1 - Fixed movement bug for photsensitive viewers and added directional text.
