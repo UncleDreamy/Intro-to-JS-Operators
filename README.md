@@ -4,6 +4,8 @@
 * random.html is a file i use for classes to text out code for proper understanding
 * calculatorwinputs.html is a calculator done using html input tags.
 * forcecalc.html is a calculator for Newton's Second Law (F = ma)
+* bouncegame.html is a demo gamepad with bounce physics
+* movegame.html is a demo gamepad with controlled movement physics
 
 ## Versions
 
@@ -22,5 +24,13 @@ random.html
 * v1 - Base Version
 
 forcecalc.htm
+
+* v1 - Base Version
+
+bouncegame.html
+
+* v1 - Base Version
+
+movegame.htm
 
 * v1 - Base Version
