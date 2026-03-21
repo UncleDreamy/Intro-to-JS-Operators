@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="Bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="sub-container">
+        <div class="inputscreen">
+          <div class="shortcuts">
+            <div>
+              <button class="glass-btn">
+                <i class="bi bi-clock-history"></i>
+              </button>
+            </div>
+            <div>
+              <button class="glass-btn">
+                <i class="bi bi-calculator-fill"></i>
+              </button>
+            </div>
+          </div>
+          <div class="input" id="display"><span id="default">0</span></div>
+        </div>
+
+        <div class="calc">
+          <div>
+            <button class="btn btn-outline-light calc-btn" id="clear">
+              AC
+            </button>
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="backspace"
+              disabled>
+              <i class="bi bi-backspace"></i>
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="modulus">
+              %
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="divide">
+              /
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-outline-light calc-btn" id="seven" value="7">
+              7
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="eight" value="8">
+              8
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="nine" value="9">
+              9
+            </button>
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="multiply"
+              value="*">
+              x
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-outline-light calc-btn" id="four" value="4">
+              4
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="five" value="5">
+              5
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="six" value="6">
+              6
+            </button>
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="subtract"
+              value="-">
+              -
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-outline-light calc-btn" id="one" value="1">
+              1
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="two" value="2">
+              2
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="three" value="3">
+              3
+            </button>
+            <button class="btn btn-outline-light calc-btn" id="add" value="+">
+              +
+            </button>
+          </div>
+          <div>
+            <button class="btn btn-outline-light calc-btn" id="zero" value="0">
+              0
+            </button>
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="decimal"
+              value=".">
+              .
+            </button>
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="equals"
+              value="=">
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let display = document.getElementById("display");
+      let zero = document.getElementById("default");
+      let clear = document.getElementById("clear");
+
+      clear.addEventListener("click", () => {
+        display.innerText = "";
+      });
+
+      document.getElementById("one").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "1";
+      });
+      document.getElementById("two").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "2";
+      });
+      document.getElementById("three").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "3";
+      });
+      document.getElementById("four").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "4";
+      });
+      document.getElementById("five").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "5";
+      });
+      document.getElementById("six").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "6";
+      });
+      document.getElementById("seven").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "7";
+      });
+      document.getElementById("eight").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "8";
+      });
+      document.getElementById("nine").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "9";
+      });
+
+      document.getElementById("add").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "+";
+      });
+
+      document.getElementById("subtract").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "-";
+      });
+
+      document.getElementById("multiply").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "*";
+      });
+
+      document.getElementById("divide").addEventListener("click", () => {
+        zero.remove();
+        display.innerText = display.innerText + "/";
+      });
+
+      document.getElementById("modulus").addEventListener("click", () => {
+        display.innerText = display.innerText + "%";
+      });
+
+      document.getElementById("decimal").addEventListener("click", () => {
+        display.innerText = display.innerText + ".";
+      });
+
+      document.getElementById("equals").addEventListener("click", () => {
+        display.innerText = "" + eval(display.innerText);
+      });
+
+    </script>
+    <script src="Bootstrap/bootstrap.bundle.js"></script>
+  </body>
+</html>

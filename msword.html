@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Bootstrap/bootstrap.css" />
+    <title>Microsoft Word</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Parkinsans:wght@300..800&display=swap");
+
+      .container {
+        width: 100vw;
+        /* border: 1px solid red; */
+        height: 100vh;
+        background-color: #282c34;
+        color: white;
+      }
+      nav {
+        height: 21%;
+        width: 100%;
+        border-bottom: 2px solid white;
+        padding: 5px;
+      }
+      nav > div {
+        width: 33%;
+        height: 100%;
+        border-right: 2px solid white;
+      }
+      span {
+        font-weight: 500;
+        font-family: "Parkinsans";
+        font-size: 1.5rem;
+      }
+      .tab-holder {
+        border-bottom: 2px solid white;
+      }
+      .font-controller {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 5px;
+        height: 130px;
+        font-family: "Parkinsans";
+      }
+      select,
+      input {
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      option {
+        color: black;
+      }
+      .body {
+        background-color: white;
+        height: 75%;
+        width: 95%;
+        margin-top: 2%;
+        display: flex;
+        justify-self: center;
+      }
+      #bodyInput {
+        width: 100%;
+        height: 100%;
+        border: 1px solid black;
+        outline: 0;
+        color: black;
+        border-radius: 0;
+        padding: 3px;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="d-flex align-items-center justify-content-between">
+        <div class="font-control">
+          <div class="tab-holder">
+            <span>Font</span>
+          </div>
+          <div class="font-controller">
+            <div class="font-family d-flex align-items-center gap-2">
+              <label for="font-family" class="fw-semibold">Font Family:</label>
+              <select name="font-family" id="font-family">
+                <option value="Arial" id="arial" style="font-family: Arial">
+                  Arial
+                </option>
+                <option
+                  value="Times New Roman"
+                  id="tnr"
+                  style="font-family: &quot;Times New Roman&quot;">
+                  Times New Roman
+                </option>
+                <option
+                  value="Georgia"
+                  id="georgia"
+                  style="font-family: Georgia">
+                  Georgia
+                </option>
+                <option
+                  value="Verdana"
+                  id="verdana"
+                  style="font-family: Verdana">
+                  Verdana
+                </option>
+              </select>
+            </div>
+
+            <div class="font-size">
+              <label for="font-size" class="fw-semibold">Font Size:</label>
+              <input
+                type="number"
+                name="font-size"
+                id="font-size"
+                min="1"
+                max="100"
+                value="15" />
+              <button class="btn btn-outline-light" id="fs-btn">Apply</button>
+            </div>
+
+            <div class="formatting mb-2">
+              <label class="fw-semibold">Formatting: </label>
+              <button
+                class="btn btn-outline-light fw-bolder me-1"
+                id="bold"
+                title="Bold">
+                B
+              </button>
+              <button
+                class="btn btn-outline-light fst-italic me-1"
+                id="italic"
+                title="Italicize">
+                I
+              </button>
+              <button
+                class="btn btn-outline-light text-decoration-underline me-1"
+                id="underline"
+                title="Underline">
+                U
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="color-controls">
+          <div class="tab-holder">
+            <span>Color</span>
+          </div>
+          <div class="color-controller p-2 d-flex gap-2">
+            <label for="color" class="fw-semibold">Color: </label>
+            <input type="color" name="color" id="color" title="Choose Color" />
+          </div>
+        </div>
+        <div class="border-0"></div>
+      </nav>
+
+      <div class="body">
+        <textarea id="bodyInput"></textarea>
+      </div>
+    </div>
+
+    <script>
+      let fontFamilySelect = document.getElementById("font-family");
+      let fontSizeInput = document.getElementById("font-size");
+      let bodyInput = document.getElementById("bodyInput");
+      let boldBtn = document.getElementById("bold");
+      let italicBtn = document.getElementById("italic");
+      let underlineBtn = document.getElementById("underline");
+      let color = document.getElementById("color");
+      let fsBtn = document.getElementById("fs-btn");
+
+      // Change font family when select changes
+      fontFamilySelect.addEventListener("change", () => {
+        bodyInput.style.fontFamily = fontFamilySelect.value;
+      });
+
+      // Change font size when apply button is clicked
+        fsBtn.addEventListener("click", () => {
+          bodyInput.style.fontSize = fontSizeInput.value + "px";
+        });
+
+      // Bold button
+      boldBtn.addEventListener("click", () => {
+        if (bodyInput.style.fontWeight === "bold") {
+          bodyInput.style.fontWeight = "normal";
+        } else {
+          bodyInput.style.fontWeight = "bold";
+        }
+      });
+
+      // Italic button
+      italicBtn.addEventListener("click", () => {
+        if (bodyInput.style.fontStyle === "italic") {
+          bodyInput.style.fontStyle = "normal";
+        } else {
+          bodyInput.style.fontStyle = "italic";
+        }
+      });
+
+      // Underline button
+      underlineBtn.addEventListener("click", () => {
+        if (bodyInput.style.textDecoration === "underline") {
+          bodyInput.style.textDecoration = "none";
+        } else {
+          bodyInput.style.textDecoration = "underline";
+        }
+      });
+
+      // Color button
+      color.addEventListener("input", () => {
+        bodyInput.style.color = color.value;
+      });
+    </script>
+
+    <script src="Bootstrap/bootstrap.bundle.js"></script>
+  </body>
+</html>

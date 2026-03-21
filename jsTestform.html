@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Bootstrap/bootstrap.css" />
+    <title>Document</title>
+    <style>
+      .big {
+        font-size: 50px;
+        color: green;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      .bg {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <h1 id="title">My App</h1>
+    <button id="btn">Click Me</button>
+
+    <h1 id="myTitle">Hello</h1>
+    <button id="myButton">Add Style</button>
+
+    <br /><br />
+
+    <button id="create">Create a new paragraph</button>
+
+    <br /><br /><br />
+
+    <input type="text" placeholder="Add Item" id="input" />
+    <button id="add">Add Item</button>
+    <ul id="list"></ul>
+
+    <br /><br /><br />
+
+    <button id="darkmode">Toggle Dark Mode</button>
+
+    <script>
+      let title = document.getElementById("title");
+      let button = document.getElementById("btn");
+      let mybtn = document.querySelector("#myButton");
+      let mytitle = document.querySelector("#myTitle");
+      let create = document.querySelector("#create");
+      let input = document.querySelector("#input");
+      let add = document.querySelector("#add");
+      let bgMode = document.querySelector("#darkmode");
+      let body = document.querySelector("#body");
+
+      button.addEventListener("click", () => {
+        // text value change
+        title.innerText = "Javascript is fun";
+
+        // text color change
+        title.style.color = "red";
+        title.style.fontSize = "30px";
+      });
+
+      // class manipulation
+      mybtn.addEventListener("click", () => {
+        // toggle for click and unclick
+        mytitle.classList.toggle("big");
+      });
+
+      create.addEventListener("click", () => {
+        let p = document.createElement("p");
+        p.innerText = "I am learning DOM manipulation";
+
+        document.body.appendChild(p);
+        title.remove();
+      });
+
+      // create list
+      add.addEventListener("click", () => {
+        let item = input.value;
+        let list = document.createElement("li");
+        list.innerText = item;
+
+        document.getElementById("list").appendChild(list);
+
+        list.addEventListener("click", () => {
+          list.remove();
+        });
+      });
+
+      // background color change
+      bgMode.addEventListener("click", () => {
+        body.classList.toggle("bg");
+        title.style.color = "white";
+        list.style.color = "white";
+        p.style.color = "white";
+      });
+    </script>
+  </body>
+  <script src="Bootstrap/bootstrap.js"></script>
+</html>

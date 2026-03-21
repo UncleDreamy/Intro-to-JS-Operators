@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Bootstrap/bootstrap.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="div"></div>
+    <div class="custom-div"></div>
+    <div class="custom-div"></div>
+    <p class="message" style="color: red">Hi ski</p>
+    <p class="message" style="color: red">Hi skisettes</p>
+    <p class="message" style="color: red">Hi gays</p>
+    <!-- comment node -->
+    <center>
+      <button id="button" class="btn btn-outline-dark p-2 fw-bold">
+        Click
+      </button>
+    </center>
+    <script>
+      // dom manipulation by id
+      let btn = document.getElementById("button");
+
+      // dom manipulation by class, but this selects more than one element since classes are not as unique as id
+      let message = document.getElementsByClassName("message");
+
+      let remove = document.getElementsByTagName("p")[1];
+
+      //   An event listener for click
+      btn.addEventListener("click", () => {
+
+          remove.remove();
+
+        // div style manipulation with classname
+        document.getElementsByClassName("custom-div")[0].style =
+          "height: 150px; width: 150px; background-color: red; margin-left: 20px; margin-top: 20px;";
+
+        // button text manipulation
+        btn.innerText = "Clicked";
+
+        // p tag manipulation
+        message[0].innerText = "Thanks for clicking";
+        message[2].innerText = "This is the third p tag";
+        document.getElementsByName("p")[1].innerText =
+          "This is the second p tag";
+
+
+      });
+    </script>
+    <script src="Bootstrap/bootstrap.bundle.js"></script>
+  </body>
+</html>
