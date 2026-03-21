@@ -6,6 +6,9 @@
 * forcecalc.html is a calculator for Newton's Second Law (F = ma)
 * bouncegame.html is a demo gamepad with bounce physics
 * movegame.html is a demo gamepad with controlled movement physics
+* calculator.html is a fully working calculator
+
+ps: any unadded file in the readme.md is simply either a test file or a rough sheet.
 
 ## Versions
 
@@ -35,3 +38,8 @@ movegame.html
 
 * v1 - Base Version
 * v1.1 - Fixed movement bug for photsensitive viewers and added directional text.
+
+calculator.html
+
+* v1 - Base Version
+* v1.2 - In Development.
