@@ -42,4 +42,4 @@ movegame.html
 calculator.html
 
 * v1 - Base Version
-* v1.2 - In Development.
+* v1.2 - Fixed Calculator Slowness bug (due to event listeners) and zero (0) bug.
