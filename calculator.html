@@ -40,21 +40,30 @@
               disabled>
               <i class="bi bi-backspace"></i>
             </button>
-            <button class="btn btn-outline-light calc-btn" id="modulus">
+            <button class="btn btn-outline-light calc-btn" id="modulus" value="%">
               %
             </button>
-            <button class="btn btn-outline-light calc-btn" id="divide">
+            <button class="btn btn-outline-light calc-btn" id="divide" value="/">
               /
             </button>
           </div>
           <div>
-            <button class="btn btn-outline-light calc-btn" id="seven" value="7">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="7">
               7
             </button>
-            <button class="btn btn-outline-light calc-btn" id="eight" value="8">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="8">
               8
             </button>
-            <button class="btn btn-outline-light calc-btn" id="nine" value="9">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="9">
               9
             </button>
             <button
@@ -65,13 +74,22 @@
             </button>
           </div>
           <div>
-            <button class="btn btn-outline-light calc-btn" id="four" value="4">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="4">
               4
             </button>
-            <button class="btn btn-outline-light calc-btn" id="five" value="5">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="5">
               5
             </button>
-            <button class="btn btn-outline-light calc-btn" id="six" value="6">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="6">
               6
             </button>
             <button
@@ -82,13 +100,22 @@
             </button>
           </div>
           <div>
-            <button class="btn btn-outline-light calc-btn" id="one" value="1">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="1">
               1
             </button>
-            <button class="btn btn-outline-light calc-btn" id="two" value="2">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="2">
               2
             </button>
-            <button class="btn btn-outline-light calc-btn" id="three" value="3">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="3">
               3
             </button>
             <button class="btn btn-outline-light calc-btn" id="add" value="+">
@@ -96,12 +123,15 @@
             </button>
           </div>
           <div>
-            <button class="btn btn-outline-light calc-btn" id="zero" value="0">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="number"
+              value="0">
               0
             </button>
             <button
               class="btn btn-outline-light calc-btn"
-              id="decimal"
+              id="number"
               value=".">
               .
             </button>
@@ -120,80 +150,39 @@
       let display = document.getElementById("display");
       let zero = document.getElementById("default");
       let clear = document.getElementById("clear");
+      const numberButtons = document.querySelectorAll("#number");
+      const calcButtons = document.querySelectorAll(
+        "#add, #subtract, #multiply, #divide, #modulus",
+      );
+      const solve = document.getElementById("equals");
+
+      numberButtons.forEach((element) => {
+        element.addEventListener("click", () => {
+          if (element !== 0 ) {
+            zero.remove();
+            display.innerText += element.value;
+          } else {
+            display.innerText += element.value;
+          }
+        });
+      });
+
+      calcButtons.forEach((element) => {
+        element.addEventListener("click", () => {
+          display.innerText += element.value;
+        });
+      });
+
+      solve.addEventListener("click", () => {
+        zero.classList.toggle("answer");
+        display.innerText = eval(display.innerText);
+      });
 
       clear.addEventListener("click", () => {
         display.innerText = "";
-      });
+      })
 
-      document.getElementById("one").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "1";
-      });
-      document.getElementById("two").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "2";
-      });
-      document.getElementById("three").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "3";
-      });
-      document.getElementById("four").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "4";
-      });
-      document.getElementById("five").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "5";
-      });
-      document.getElementById("six").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "6";
-      });
-      document.getElementById("seven").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "7";
-      });
-      document.getElementById("eight").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "8";
-      });
-      document.getElementById("nine").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "9";
-      });
-
-      document.getElementById("add").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "+";
-      });
-
-      document.getElementById("subtract").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "-";
-      });
-
-      document.getElementById("multiply").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "*";
-      });
-
-      document.getElementById("divide").addEventListener("click", () => {
-        zero.remove();
-        display.innerText = display.innerText + "/";
-      });
-
-      document.getElementById("modulus").addEventListener("click", () => {
-        display.innerText = display.innerText + "%";
-      });
-
-      document.getElementById("decimal").addEventListener("click", () => {
-        display.innerText = display.innerText + ".";
-      });
-
-      document.getElementById("equals").addEventListener("click", () => {
-        display.innerText = "" + eval(display.innerText);
-      });
-
+      console.log(numberButtons);
     </script>
     <script src="Bootstrap/bootstrap.bundle.js"></script>
   </body>

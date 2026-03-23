@@ -208,4 +208,9 @@ body {
   align-items: flex-end;
   font-size: 3rem;
   font-weight: 500;
+  overflow: hidden !important;
+}
+.answer{
+  font-size: 2rem !important;
+  margin-bottom: 10%;
 }
