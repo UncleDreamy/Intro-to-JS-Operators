@@ -40,10 +40,16 @@
               disabled>
               <i class="bi bi-backspace"></i>
             </button>
-            <button class="btn btn-outline-light calc-btn" id="modulus" value="%">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="modulus"
+              value="%">
               %
             </button>
-            <button class="btn btn-outline-light calc-btn" id="divide" value="/">
+            <button
+              class="btn btn-outline-light calc-btn"
+              id="divide"
+              value="/">
               /
             </button>
           </div>
@@ -147,40 +153,89 @@
     </div>
 
     <script>
+      // all variables for storing all inputs and pre solved info
       let display = document.getElementById("display");
       let zero = document.getElementById("default");
       let clear = document.getElementById("clear");
+      // number collector
       const numberButtons = document.querySelectorAll("#number");
+      // operator collector
       const calcButtons = document.querySelectorAll(
         "#add, #subtract, #multiply, #divide, #modulus",
       );
+      // equal to button
       const solve = document.getElementById("equals");
+      // backspace button
+      const backspace = document.getElementById("backspace");
+      // unsolved values
+      let values = [];
+      // answer and pre solved values output creator
+      let preCalc = document.createElement("span");
+      let answer = document.createElement("span");
 
+      // numberButtons event listener
       numberButtons.forEach((element) => {
         element.addEventListener("click", () => {
-          if (element !== 0 ) {
+          preCalc.classList.remove("answer");
+          answer.innerText = "";
+
+          // if the first number pressed isnt zero, remive the default zero to avoid eg. (01)
+          if (element !== 0) {
             zero.remove();
-            display.innerText += element.value;
+            // incremental typing of values
+            values += element.value;
+            preCalc.innerText += element.value;
+            // display the values to the user
+            display.appendChild(preCalc);
+            // enable the backspace button after a number is typed
+            backspace.disabled = false;
           } else {
-            display.innerText += element.value;
+            // else leave the zero, add new values and display it while leaving backspace disabled
+            values += element.value;
+            let preCalc = document.createElement("span");
+            preCalc.innerText = element.value;
+            backspace.disabled = false;
           }
         });
       });
 
+      // operator event listener
       calcButtons.forEach((element) => {
         element.addEventListener("click", () => {
-          display.innerText += element.value;
+          // if the pre calculated values has enter answer mode (displayed ontop), remove it when the user clicks the operator
+          if (preCalc.classList.remove("answer") == true) {
+            preCalc.classList.add("answer");
+            preCalc.innerText += element.value;
+            values += element.value;
+          } else {
+            preCalc.innerText += element.value;
+            values += element.value;
+            answer.innerText = "";
+          }
         });
       });
 
+      // if equal to is clicked, create a span element, display the answer in it and output it
       solve.addEventListener("click", () => {
-        zero.classList.toggle("answer");
-        display.innerText = eval(display.innerText);
+        preCalc.classList.add("answer");
+        display.appendChild(answer);
+
+        answer.innerText = eval(values);
       });
 
+      // backspace.addEventListener("click", () => {
+      //   values.slice(0, -1);
+      //   display.innerText == values;
+      // });
+
+      // clear everything if AC is clicked and disable backspace
       clear.addEventListener("click", () => {
-        display.innerText = "";
-      })
+        preCalc.classList.remove("answer");
+        preCalc.innerText = "";
+        answer.innerText = "";
+        values = [];
+        document.getElementById("backspace").disabled = true;
+      });
     </script>
     <script src="Bootstrap/bootstrap.bundle.js"></script>
   </body>
