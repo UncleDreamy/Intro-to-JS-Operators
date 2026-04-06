@@ -44,3 +44,4 @@ calculator.html
 * v1 - Base Version
 * v1.2 - Fixed Calculator Slowness bug (due to event listeners) and zero (0) bug.
 * v1.2.5 - Added new answer and continual animations and add a dyamic bckspace button (non-functional).
+* v1.3 - Fixed major bugs and used manual calcultion method insetad of eval.
